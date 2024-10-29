@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        .maudo {
+            font-size: 100%;
+            color: antiquewhite;
+        }
+        
+        [class*="col-"] {
+            padding-right: 0;
+            padding-left: 0;
+        }
+        
+        li {
+            width: 100px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            var i = 2;
+            $("btnDK").click(function() {
+                $("#myModal").modal();
+            });
+
+            function kiemtraMa() {
+                var mauKT = /[0-9]{9}$/;
+                if (mauKT.test($("#txtMa").val()) == "") {
+                    $("#tbMa").html("Bat buoc nhap");
+                    $("#tbMa").addClass("maudo");
+                } else {
+                    $("#tbMa").html("Nhap sai");
+                    $("#tbMa").addClass("maudo");
+                }
+            }
+            $("#txtMa").blur(kiemtraMa);
+
+            function kiemtraHT() {
+                var kt = /(^[A-Z]{1}[a-z]+)(\s{A-Z}{1}[a-z]*)+$/;
+                if ($("#txtHT").val() == "") {
+                    $("#tbTen").html("Nhap sai");
+                    $("#tbTen").addClass("maudo");
+                    return false;
+                }
+                if (!kt.test($("txtHT").val())) {
+                    $("#tbTen").html("*Chu cai dau moi tu phai viet hoa!!");
+                    $("#tbTen").addClass("maudo");
+                    return false;
+                }
+
+                $("tbTen").html("*");
+                return true;
+            };
+            $("txtHT").blur(kiemtraHT);
+
+            function kiemtraDC() {
+                var mauKT1 = /^[a-z0-9-_]{3,15}$/;
+                var mauKT = /(abc)$/;
+                if ($("#txtDC").val() == "") {
+                    $("#tbDC").html("Bat buoc nhap");
+                    $("#tbDC").addClass("maudo");
+                    return false;
+                }
+                if (!mauKT.test($("txtDC").val())) {
+                    $("#tbTen").html("Nhap sai");
+                    $("#tbTen").addClass("maudo");
+                    return false;
+                }
+                $("#tbDC").html("*");
+                return true;
+            }
+            $("#txtDC").blur(kiemTraDC);
+        })
+        </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <img src="../img/HEADER.PNG" alt="" width="100%">
+            </div>
+        </div>
+        <div class="row">
+            <nav class="navbar">
+                <ul class="nav nav-navbar navbar-expand">
+                    <li class="nav-item"><a href="#" class="nav-link">Dang nhap</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" id="btnDK">Dang ky</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="row ">
+            <h3>DANH SACH THAM GIA DOI ROBOCON KHOA CNTT</h3>
+        </div>
+        <div class="row">
+            <table class="table-bordered table-light table-primary table-hovert table table-striped" id="tbdanhsach">
+                <tr>
+                    <th>STT</th>
+                    <th>Ma Thanh Vien</th>
+                    <th>Ho Ten</th>
+                    <th>Lop</th>
+                    <th>Ngay Tham Gia</th>
+                    <th>Dien Thoai</th>
+                    <th>Email</th>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <th>K16-123456789</th>
+                    <th>Tran Thanh Kha</th>
+                    <th>DHKTPM16ATT</th>
+                    <th>22/02/2022</th>
+                    <th>0909-123-123</th>
+                    <th>Thanhkha@iuh.edu.vn</th>
+                </tr>
+            </table>
+        </div>
+        <div class="row">
+            <div class="modal-face" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5>THONG TIN CA NHAN</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="moadal-body">
+                            <form class="form-control">
+                                <div class="row form-group p-1">
+                                    <div class="col-3 col-sm-3">
+                                        <label for=""> Ma thanh vien:</label>
+                                    </div>
+                                    <div class="col-3 col-sm-6">
+                                        <input type="text" class="form-control" placeholder="123456789" id="txtMa">
+                                    </div>
+                                    <div class="col-3 col-sm-3 p-2">
+                                        <span id="tbMa">*</span>
+                                    </div>
+                                </div>
+                                <div class="row form-group p-1">
+                                    <div class="col-3">
+                                        <label for="">Họ tên:</label>
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" id="txtHT" class="form-control" placeholder="Tran Anh Dung">
+                                    </div>
+                                    <div class="col-3 p-2">
+                                        <span id="tbTen">*</span>
+                                    </div>
+                                </div>
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <h9>Mã sinh viên:22723841</h9>
+        </div>
+        <div class="col-5">
+            <h9>Họ tên: Nguyễn Thị Cẩm Ly</h9>
+        </div>
+        <div class="col-4">
+            <h9>Phòng thi:DHTMDT18B</h9>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
